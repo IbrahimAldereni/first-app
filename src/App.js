@@ -14,7 +14,7 @@ export const UserContext = React.createContext();
 
 function App() {
   // hooks
-  const [user, setUser] = useState({ name: "", username: "" });
+  const [user, setUser] = useState({});
 
   return (
     <div>

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 
 import { UserContext } from "../../App";
 import { profileService } from "../../services/profileService";
+import PostCard from "../PostCard";
 
 function ProfilePage() {
   // hooks
@@ -11,12 +12,17 @@ function ProfilePage() {
 
   useEffect(() => {
     profileService.getPosts(user.id).then((data) => {
-      console.log(data);
       setPosts(data);
     });
   }, []);
 
-  return <div>{posts[0]?.title}</div>;
+  return (
+    <div>
+      {posts.map((post) => {
+        return <PostCard data={post} />;
+      })}
+    </div>
+  );
 }
 
 export default ProfilePage;

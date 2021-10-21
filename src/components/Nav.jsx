@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 import AppBar from "@mui/material/AppBar";
 import { Avatar } from "@mui/material";
@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
 import { UserContext } from "../App";
+import { Link } from "react-router-dom";
 
 // style
 const useStyles = makeStyles({
@@ -23,8 +24,6 @@ function Nav() {
 
   const { user } = useContext(UserContext);
 
-  // functions
-
   return (
     <div>
       <AppBar position="sticky" color="primary">
@@ -38,7 +37,7 @@ function Nav() {
 
           <Box display="flex" className={classes.flex}>
             <Typography mr={1}>{user?.name}</Typography>
-            <Avatar>{user?.name[0]?.toUpperCase()}</Avatar>
+            <Avatar>{user?.name?.[0]?.toUpperCase()}</Avatar>
           </Box>
         </Toolbar>
       </AppBar>
