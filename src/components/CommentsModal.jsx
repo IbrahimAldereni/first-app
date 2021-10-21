@@ -36,6 +36,7 @@ function CommentsModal({ open, handleClose, postId }) {
   const classes = useStyles();
 
   useEffect(() => {
+    // reset the comments state
     setComments([]);
 
     // to fetch the data once the modal open (not twice when open/close)
@@ -43,7 +44,6 @@ function CommentsModal({ open, handleClose, postId }) {
       profileService.getComments(postId).then((data) => {
         setComments(data);
       });
-      console.log("open");
     }
   }, [open]);
 
