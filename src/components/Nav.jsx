@@ -7,8 +7,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
+
 import { UserContext } from "../App";
-import { Link } from "react-router-dom";
 
 // style
 const useStyles = makeStyles({
@@ -21,7 +21,6 @@ const useStyles = makeStyles({
 function Nav() {
   // hooks
   const classes = useStyles();
-
   const { user } = useContext(UserContext);
 
   return (

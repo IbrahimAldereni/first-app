@@ -2,8 +2,9 @@ import React from "react";
 
 import Container from "@mui/material/Container";
 import { Box } from "@mui/system";
-import Nav from "./Nav";
 import { makeStyles } from "@mui/styles";
+
+import Nav from "./Nav";
 
 // style
 const useStyles = makeStyles({
