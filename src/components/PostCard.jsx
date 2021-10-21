@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Button,
@@ -17,30 +17,38 @@ const useStyles = makeStyles({
   },
 });
 
-function PostCard({ data }) {
+function PostCard({ data, handleOpen }) {
   // hooks
   const classes = useStyles();
 
-  return (
-    <Card className={classes.card}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" mb={2}>
-          {data.title}
-        </Typography>
+  // functions
+  const openModal = () => {
+    handleOpen(data.id);
+  };
 
-        <Typography variant="body2">{data.body}</Typography>
-      </CardContent>
-      <CardActions>
-        <Button
-          size="small"
-          variant="outlined"
-          color="secondary"
-          endIcon={<ChatIcon />}
-        >
-          Comments
-        </Button>
-      </CardActions>
-    </Card>
+  return (
+    <>
+      <Card className={classes.card}>
+        <CardContent>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" mb={2}>
+            {data.title}
+          </Typography>
+
+          <Typography variant="body2">{data.body}</Typography>
+        </CardContent>
+        <CardActions>
+          <Button
+            size="small"
+            variant="outlined"
+            color="secondary"
+            endIcon={<ChatIcon />}
+            onClick={openModal}
+          >
+            Comments
+          </Button>
+        </CardActions>
+      </Card>
+    </>
   );
 }
 

@@ -1,11 +1,11 @@
 import axios from "axios";
 
 class ProfileService {
-  apiUrl = "https://jsonplaceholder.typicode.com/posts";
-
   async getPosts(userID) {
+    const apiUrl = "https://jsonplaceholder.typicode.com/posts";
+
     try {
-      const response = await axios.get(this.apiUrl);
+      const response = await axios.get(apiUrl);
 
       let filteredPosts = [];
 
@@ -15,6 +15,18 @@ class ProfileService {
         });
       }
       return filteredPosts;
+    } catch (error) {
+      return error.message;
+    }
+  }
+
+  async getComments(postId) {
+    const apiUrl = `https://jsonplaceholder.typicode.com/comments?postId=${postId}`;
+
+    try {
+      const response = await axios.get(apiUrl);
+
+      return response.data;
     } catch (error) {
       return error.message;
     }
