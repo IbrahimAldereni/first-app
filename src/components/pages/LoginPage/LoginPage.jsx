@@ -73,7 +73,7 @@ function LoginPage() {
         Login
       </Typography>
       <Paper elevation={4} className={classes.paper}>
-        <form onSubmit={formSubmitHandler}>
+        <form onSubmit={formSubmitHandler} title="loginForm">
           <TextField
             type="email"
             id="email"
@@ -81,6 +81,7 @@ function LoginPage() {
             margin="normal"
             fullWidth
             onChange={(e) => setEmail(e.target.value)}
+            value={email}
             error={error}
             helperText={error ? "email not found" : ""}
           />
