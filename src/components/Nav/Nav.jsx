@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
 
-import { UserContext } from "../App";
+import { UserContext } from "../../App";
 
 // style
 const useStyles = makeStyles({
@@ -35,8 +35,10 @@ function Nav() {
           </Box>
 
           <Box display="flex" className={classes.flex}>
-            <Typography mr={1}>{user?.name}</Typography>
-            <Avatar>{user?.name?.[0]?.toUpperCase()}</Avatar>
+            <Typography title="navUsername" mr={1}>
+              {user?.name}
+            </Typography>
+            <Avatar title="navAvatar">{user?.name?.[0]?.toUpperCase()}</Avatar>
           </Box>
         </Toolbar>
       </AppBar>

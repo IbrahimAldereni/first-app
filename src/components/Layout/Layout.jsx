@@ -4,7 +4,7 @@ import Container from "@mui/material/Container";
 import { Box } from "@mui/system";
 import { makeStyles } from "@mui/styles";
 
-import Nav from "./Nav";
+import Nav from "../Nav/Nav";
 
 // style
 const useStyles = makeStyles({

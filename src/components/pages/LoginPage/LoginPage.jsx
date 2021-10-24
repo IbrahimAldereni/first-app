@@ -6,8 +6,8 @@ import { Box } from "@mui/system";
 import { makeStyles } from "@mui/styles";
 import LoginIcon from "@mui/icons-material/Login";
 
-import { loginService } from "../../services/loginService";
-import { UserContext } from "../../App";
+import { loginService } from "../../../services/loginService";
+import { UserContext } from "../../../App";
 
 // style
 const useStyles = makeStyles({

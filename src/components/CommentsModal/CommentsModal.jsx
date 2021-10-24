@@ -6,8 +6,8 @@ import { Box } from "@mui/system";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { makeStyles } from "@mui/styles";
 
-import Comment from "./Comment";
-import { profileService } from "../services/profileService";
+import Comment from "../Comment/Comment";
+import { profileService } from "../../services/profileService";
 
 // style
 const useStyles = makeStyles({

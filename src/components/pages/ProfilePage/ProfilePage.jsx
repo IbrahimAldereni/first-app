@@ -5,10 +5,10 @@ import { Button, Skeleton } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { makeStyles } from "@mui/styles";
 
-import { UserContext } from "../../App";
-import { profileService } from "../../services/profileService";
-import CommentsModal from "../CommentsModal";
-import PostCard from "../PostCard";
+import { UserContext } from "../../../App";
+import { profileService } from "../../../services/profileService";
+import CommentsModal from "../../CommentsModal/CommentsModal";
+import PostCard from "../../PostCard/PostCard";
 
 // style
 const useStyles = makeStyles({
