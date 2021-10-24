@@ -67,9 +67,13 @@ function ProfilePage() {
               />
             );
           })
-        : [1, 2, 3, 4, 5].map(() => {
+        : [1, 2, 3, 4, 5].map((num, index) => {
             return (
-              <Skeleton variant="rectangular" className={classes.skeleton} />
+              <Skeleton
+                key={index}
+                variant="rectangular"
+                className={classes.skeleton}
+              />
             );
           })}
 

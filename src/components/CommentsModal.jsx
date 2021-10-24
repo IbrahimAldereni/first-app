@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 import { Modal, Button, Skeleton } from "@mui/material";
 import { Box } from "@mui/system";
@@ -59,9 +60,13 @@ function CommentsModal({ open, handleClose, postId }) {
           ? comments.map((comment) => {
               return <Comment key={comment.id} data={comment} />;
             })
-          : [1, 2, 3, 4].map(() => {
+          : [1, 2, 3, 4].map((num, index) => {
               return (
-                <Skeleton variant="rectangular" className={classes.skeleton} />
+                <Skeleton
+                  key={index}
+                  variant="rectangular"
+                  className={classes.skeleton}
+                />
               );
             })}
 
@@ -77,5 +82,17 @@ function CommentsModal({ open, handleClose, postId }) {
     </Modal>
   );
 }
+
+// prop types and default props
+CommentsModal.propTypes = {
+  open: PropTypes.bool,
+  handleClose: PropTypes.func,
+  postId: PropTypes.number,
+};
+
+CommentsModal.defaultProps = {
+  open: false,
+  postId: 0,
+};
 
 export default CommentsModal;
