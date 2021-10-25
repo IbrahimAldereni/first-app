@@ -46,7 +46,7 @@ function CommentsModal({ open, handleClose, postId }) {
         setComments(data);
       });
     }
-  }, [open]);
+  }, [open, postId]);
 
   return (
     <Modal
