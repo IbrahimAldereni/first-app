@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
+import axios from "axios";
 
 import { UserContext } from "../App";
 import LoginPage from "../components/pages/LoginPage/LoginPage";
@@ -17,7 +18,7 @@ const MockLoginPage = () => {
   );
 };
 
-/////////////////////////// read input values /////////////////////////////
+//////////////////////////////// test read input values //////////////////////////////////
 describe("read input values", () => {
   test("should type on email input value", async () => {
     await act(async () => {
@@ -45,6 +46,17 @@ describe("test redirect after login", () => {
   test("Form entering wrong email", async () => {
     const history = createMemoryHistory();
 
+    axios.get.mockResolvedValueOnce({
+      data: [
+        {
+          id: 1,
+          name: "Leanne Graham",
+          username: "Bret",
+          email: "Sincere@april.biz",
+        },
+      ],
+    });
+
     await act(async () => {
       render(
         <Router history={history}>
@@ -66,6 +78,17 @@ describe("test redirect after login", () => {
 
   test("Form entering correct email", async () => {
     const history = createMemoryHistory();
+
+    axios.get.mockResolvedValueOnce({
+      data: [
+        {
+          id: 1,
+          name: "Leanne Graham",
+          username: "Bret",
+          email: "Sincere@april.biz",
+        },
+      ],
+    });
 
     await act(async () => {
       render(

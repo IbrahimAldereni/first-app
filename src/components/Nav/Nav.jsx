@@ -24,7 +24,7 @@ function Nav() {
   const { user } = useContext(UserContext);
 
   return (
-    <div>
+    <div title="nav">
       <AppBar position="sticky" color="primary">
         <Toolbar className={classes.flex}>
           <Box display="flex" className={classes.flex}>

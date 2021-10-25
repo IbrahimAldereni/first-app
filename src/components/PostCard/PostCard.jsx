@@ -29,7 +29,7 @@ function PostCard({ data, handleOpen }) {
 
   return (
     <>
-      <Card className={classes.card}>
+      <Card className={classes.card} title={`postCard${data?.id}`}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" mb={2}>
             {data?.title}
@@ -39,6 +39,7 @@ function PostCard({ data, handleOpen }) {
         </CardContent>
         <CardActions>
           <Button
+            title="commentsBtn"
             size="small"
             variant="outlined"
             color="secondary"

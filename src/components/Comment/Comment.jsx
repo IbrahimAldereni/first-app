@@ -5,7 +5,10 @@ import { Paper, Typography } from "@mui/material";
 
 function Comment({ data }) {
   return (
-    <Paper sx={{ marginY: "20px", padding: "10px" }}>
+    <Paper
+      sx={{ marginY: "20px", padding: "10px" }}
+      title={`commentCard${data.id}`}
+    >
       <Typography sx={{ fontSize: 9 }} color="text.secondary">
         {data?.name}
       </Typography>

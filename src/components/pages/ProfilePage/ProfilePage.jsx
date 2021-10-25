@@ -35,7 +35,7 @@ function ProfilePage() {
     profileService.getPosts(user.id).then((data) => {
       setPosts(data);
     });
-  }, []);
+  }, [user.id]);
 
   // functions
   const closeModal = () => {
@@ -50,6 +50,7 @@ function ProfilePage() {
   return (
     <div>
       <Button
+        title="backBtn"
         onClick={() => history.push("/")}
         startIcon={<KeyboardBackspaceIcon />}
         sx={{ marginY: "30px" }}
@@ -57,8 +58,8 @@ function ProfilePage() {
         Back to login page
       </Button>
 
-      {posts.length > 1
-        ? posts.map((post) => {
+      {posts.length >= 1
+        ? posts.map((post, index) => {
             return (
               <PostCard
                 key={post.id}
@@ -70,6 +71,7 @@ function ProfilePage() {
         : [1, 2, 3, 4, 5].map((num, index) => {
             return (
               <Skeleton
+                data-testid={`postSkeleton${index}`}
                 key={index}
                 variant="rectangular"
                 className={classes.skeleton}

@@ -21,7 +21,9 @@ function Layout({ children }) {
     <>
       <Nav />
       <Container>
-        <Box className={classes.box}>{children}</Box>
+        <Box className={classes.box} title="layoutContainer">
+          {children}
+        </Box>
       </Container>
     </>
   );

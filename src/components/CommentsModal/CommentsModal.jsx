@@ -50,13 +50,14 @@ function CommentsModal({ open, handleClose, postId }) {
 
   return (
     <Modal
+      title="commentModal"
       open={open}
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
       <Box className={classes.box}>
-        {comments.length > 1
+        {comments.length >= 1
           ? comments.map((comment) => {
               return <Comment key={comment.id} data={comment} />;
             })
@@ -71,6 +72,7 @@ function CommentsModal({ open, handleClose, postId }) {
             })}
 
         <Button
+          title="closeModalBtn"
           onClick={handleClose}
           color="error"
           variant="contained"
