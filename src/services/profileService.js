@@ -16,7 +16,7 @@ class ProfileService {
       }
       return filteredPosts;
     } catch (error) {
-      return error.message;
+      return error;
     }
   }
 
@@ -28,7 +28,7 @@ class ProfileService {
 
       return response.data;
     } catch (error) {
-      return error.message;
+      return error;
     }
   }
 }

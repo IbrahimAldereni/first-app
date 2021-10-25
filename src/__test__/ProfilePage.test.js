@@ -4,6 +4,7 @@ import { createMemoryHistory } from "history";
 import { Router } from "react-router";
 
 import { UserContext } from "../App";
+import CommentsModal from "../components/CommentsModal/CommentsModal";
 import ProfilePage from "../components/pages/ProfilePage/ProfilePage";
 
 // mock profile page
@@ -236,4 +237,30 @@ test("should return to home page when click on the back button", async () => {
   fireEvent.click(backBtn);
 
   expect(history.location.pathname).toBe("/");
+});
+
+///////////////////////////////// test error api request /////////////////////////////
+describe("test wrong request", () => {
+  test("should return error message from get posts request", async () => {
+    const user = {
+      id: 1,
+      name: "Leanne Graham",
+      username: "Bret",
+      email: "Sincere@april.biz",
+    };
+
+    axios.get.mockRejectedValueOnce();
+
+    await act(async () => {
+      render(<MockProfilePage user={user} />);
+    });
+  });
+
+  test("should return error message from get comments request", async () => {
+    axios.get.mockRejectedValueOnce();
+
+    await act(async () => {
+      render(<CommentsModal open={true} postId={1} />);
+    });
+  });
 });

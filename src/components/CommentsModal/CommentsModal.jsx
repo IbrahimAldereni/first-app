@@ -57,8 +57,8 @@ function CommentsModal({ open, handleClose, postId }) {
       aria-describedby="modal-modal-description"
     >
       <Box className={classes.box}>
-        {comments.length >= 1
-          ? comments.map((comment) => {
+        {comments?.length >= 1
+          ? comments?.map((comment) => {
               return <Comment key={comment.id} data={comment} />;
             })
           : [1, 2, 3, 4].map((num, index) => {

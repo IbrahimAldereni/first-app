@@ -58,8 +58,8 @@ function ProfilePage() {
         Back to login page
       </Button>
 
-      {posts.length >= 1
-        ? posts.map((post, index) => {
+      {posts?.length >= 1
+        ? posts?.map((post, index) => {
             return (
               <PostCard
                 key={post.id}
