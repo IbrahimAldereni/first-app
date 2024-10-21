@@ -1,0 +1,18 @@
+name: Hello world
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set AWS environment credentials
+        run: |
+          RELEASE_TAG="${{ github.event.release.tag_name }}"
+          ENVIRONMENT=$(echo "$RELEASE_TAG" | awk -F'-' '{print $2}')
+          echo "😀$ENVIRONMENT"
