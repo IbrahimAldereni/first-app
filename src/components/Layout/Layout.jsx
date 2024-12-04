@@ -4,7 +4,7 @@ import Container from "@mui/material/Container";
 import { Box } from "@mui/system";
 import { makeStyles } from "@mui/styles";
 
-import Nav from "./Nav";
+import Nav from "../Nav/Nav";
 
 // style
 const useStyles = makeStyles({
@@ -21,7 +21,9 @@ function Layout({ children }) {
     <>
       <Nav />
       <Container>
-        <Box className={classes.box}>{children}</Box>
+        <Box className={classes.box} title="layoutContainer">
+          {children}
+        </Box>
       </Container>
     </>
   );

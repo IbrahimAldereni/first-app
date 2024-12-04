@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // packages imports
 
 // local imports
-import LoginPage from "./components/pages/LoginPage";
-import ProfilePage from "./components/pages/ProfilePage";
-import Layout from "./components/Layout";
+import LoginPage from "./components/pages/LoginPage/LoginPage";
+import ProfilePage from "./components/pages/ProfilePage/ProfilePage";
+import Layout from "./components/Layout/Layout";
 
 // context
 export const UserContext = React.createContext();

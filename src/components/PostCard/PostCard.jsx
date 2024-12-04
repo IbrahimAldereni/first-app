@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import {
   Button,
@@ -28,16 +29,17 @@ function PostCard({ data, handleOpen }) {
 
   return (
     <>
-      <Card className={classes.card}>
+      <Card className={classes.card} title={`postCard${data?.id}`}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" mb={2}>
-            {data.title}
+            {data?.title}
           </Typography>
 
-          <Typography variant="body2">{data.body}</Typography>
+          <Typography variant="body2">{data?.body}</Typography>
         </CardContent>
         <CardActions>
           <Button
+            title="commentsBtn"
             size="small"
             variant="outlined"
             color="secondary"
@@ -51,5 +53,15 @@ function PostCard({ data, handleOpen }) {
     </>
   );
 }
+
+// prop types and default props
+PostCard.propTypes = {
+  data: PropTypes.object,
+  handleOpen: PropTypes.func,
+};
+
+PostCard.defaultProps = {
+  data: {},
+};
 
 export default PostCard;

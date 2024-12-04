@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 import { Modal, Button, Skeleton } from "@mui/material";
 import { Box } from "@mui/system";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { makeStyles } from "@mui/styles";
 
-import Comment from "./Comment";
-import { profileService } from "../services/profileService";
+import Comment from "../Comment/Comment";
+import { profileService } from "../../services/profileService";
 
 // style
 const useStyles = makeStyles({
@@ -36,6 +37,7 @@ function CommentsModal({ open, handleClose, postId }) {
   const classes = useStyles();
 
   useEffect(() => {
+    // reset the comments state
     setComments([]);
 
     // to fetch the data once the modal open (not twice when open/close)
@@ -43,29 +45,34 @@ function CommentsModal({ open, handleClose, postId }) {
       profileService.getComments(postId).then((data) => {
         setComments(data);
       });
-      console.log("open");
     }
-  }, [open]);
+  }, [open, postId]);
 
   return (
     <Modal
+      title="commentModal"
       open={open}
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
       <Box className={classes.box}>
-        {comments.length > 1
-          ? comments.map((comment) => {
+        {comments?.length >= 1
+          ? comments?.map((comment) => {
               return <Comment key={comment.id} data={comment} />;
             })
-          : [1, 2, 3, 4].map(() => {
+          : [1, 2, 3, 4].map((num, index) => {
               return (
-                <Skeleton variant="rectangular" className={classes.skeleton} />
+                <Skeleton
+                  key={index}
+                  variant="rectangular"
+                  className={classes.skeleton}
+                />
               );
             })}
 
         <Button
+          title="closeModalBtn"
           onClick={handleClose}
           color="error"
           variant="contained"
@@ -77,5 +84,17 @@ function CommentsModal({ open, handleClose, postId }) {
     </Modal>
   );
 }
+
+// prop types and default props
+CommentsModal.propTypes = {
+  open: PropTypes.bool,
+  handleClose: PropTypes.func,
+  postId: PropTypes.number,
+};
+
+CommentsModal.defaultProps = {
+  open: false,
+  postId: 0,
+};
 
 export default CommentsModal;

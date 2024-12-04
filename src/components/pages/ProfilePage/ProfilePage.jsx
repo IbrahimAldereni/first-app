@@ -5,10 +5,10 @@ import { Button, Skeleton } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { makeStyles } from "@mui/styles";
 
-import { UserContext } from "../../App";
-import { profileService } from "../../services/profileService";
-import CommentsModal from "../CommentsModal";
-import PostCard from "../PostCard";
+import { UserContext } from "../../../App";
+import { profileService } from "../../../services/profileService";
+import CommentsModal from "../../CommentsModal/CommentsModal";
+import PostCard from "../../PostCard/PostCard";
 
 // style
 const useStyles = makeStyles({
@@ -35,7 +35,7 @@ function ProfilePage() {
     profileService.getPosts(user.id).then((data) => {
       setPosts(data);
     });
-  }, []);
+  }, [user.id]);
 
   // functions
   const closeModal = () => {
@@ -50,6 +50,7 @@ function ProfilePage() {
   return (
     <div>
       <Button
+        title="backBtn"
         onClick={() => history.push("/")}
         startIcon={<KeyboardBackspaceIcon />}
         sx={{ marginY: "30px" }}
@@ -57,8 +58,8 @@ function ProfilePage() {
         Back to login page
       </Button>
 
-      {posts.length > 1
-        ? posts.map((post) => {
+      {posts?.length >= 1
+        ? posts?.map((post, index) => {
             return (
               <PostCard
                 key={post.id}
@@ -67,9 +68,14 @@ function ProfilePage() {
               />
             );
           })
-        : [1, 2, 3, 4, 5].map(() => {
+        : [1, 2, 3, 4, 5].map((num, index) => {
             return (
-              <Skeleton variant="rectangular" className={classes.skeleton} />
+              <Skeleton
+                data-testid={`postSkeleton${index}`}
+                key={index}
+                variant="rectangular"
+                className={classes.skeleton}
+              />
             );
           })}
 
